@@ -28,7 +28,6 @@
 
 void initLED();
 void writeOne(int digit);
-void bargraphF(float low, float mid, float high, bool dotbar);
 void bargraph(byte low, byte mid, byte high, bool dotbar);
 int convertColsToBits(byte colVal, bool dotbar);
 

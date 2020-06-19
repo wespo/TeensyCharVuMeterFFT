@@ -32,22 +32,14 @@ void writeOne(int digit)
 
 }
 
-void bargraphF(float low, float mid, float high, bool dotbar)
-{
-  byte bLow = 1 + int(constrain(round(low)*3.0 , 0, 4));
-  byte bMid = 1 + int(constrain(round(mid)*3.0 , 0, 4));
-  byte bHigh = 1 + int(constrain(round(high)*3.0 , 0, 4));
-  bargraph(bLow, bMid, bHigh, dotbar);
-}
-
 void bargraph(byte low, byte mid, byte high, bool dotbar)
 {
   low %= 5;
   mid %= 5;
   high %= 5;
-  unsigned int bitstream = (convertColsToBits(high, dotbar) & LOW_MASK) 
+  unsigned int bitstream = (convertColsToBits(low, dotbar) & LOW_MASK) 
                          | (convertColsToBits(mid, dotbar) & MID_MASK) 
-                         | (convertColsToBits(low, dotbar) & HIGH_MASK);
+                         | (convertColsToBits(high, dotbar) & HIGH_MASK);
   writeOne(bitstream); 
 }
 
